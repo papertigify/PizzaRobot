@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 
 class Repository(private val inputValidator: InputValidator, private val routeGenerator: RouteGenerator) {
 
-    suspend fun getRoute(inputString: String): Resource<String> {
+    suspend fun getRoute(inputString: String, shouldDropMultiplePizza: Boolean): Resource<String> {
         return withContext(Dispatchers.IO) {
             // little delay to simulate long background work
             delay(300L)
@@ -17,7 +17,7 @@ class Repository(private val inputValidator: InputValidator, private val routeGe
             return@withContext if (!isInputValid) {
                 Resource.error("An error occured, please, check input", null)
             } else {
-                val result = routeGenerator.generateOutput(inputString)
+                val result = routeGenerator.generateOutput(inputString, shouldDropMultiplePizza)
                 Resource.success(result)
             }
         }

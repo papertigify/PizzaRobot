@@ -33,9 +33,11 @@ class MainActivity : DaggerAppCompatActivity() {
 
         binding.buttonFind.setOnClickListener {
             val inputString = binding.editText.text.toString()
-            viewModel.getRoute(inputString)
+            // option to drop multiple pizza if destination mentioned multiple times
+            val shouldDropMultiplePizza = binding.checkBox.isChecked
+            viewModel.getRoute(inputString, shouldDropMultiplePizza)
 
-            // close the keyboard after the button is pressed
+            // close the keyboard
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
@@ -64,6 +66,7 @@ class MainActivity : DaggerAppCompatActivity() {
                     binding.textViewOutput.isVisible = true
                     binding.progressBar.isVisible = false
                     binding.textViewOutput.text = it.message
+                    // errors are also displayed in the log to match TR
                     Log.e(TAG, it.message ?: "")
                 }
             }

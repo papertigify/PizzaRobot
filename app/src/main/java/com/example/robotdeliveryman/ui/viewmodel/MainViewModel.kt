@@ -14,10 +14,10 @@ class MainViewModel @Inject constructor(private val repository: Repository): Vie
     private val _route: MutableLiveData<Resource<String>> = MutableLiveData()
     val route: LiveData<Resource<String>> = _route
 
-    fun getRoute(inputString: String){
+    fun getRoute(inputString: String, shouldDropMultiplePizza: Boolean){
         viewModelScope.launch {
             _route.postValue(Resource.loading(null))
-            val result = repository.getRoute(inputString)
+            val result = repository.getRoute(inputString, shouldDropMultiplePizza)
             _route.postValue(result)
         }
     }

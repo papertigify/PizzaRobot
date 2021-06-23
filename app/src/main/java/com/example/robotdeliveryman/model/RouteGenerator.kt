@@ -15,7 +15,7 @@ import kotlin.math.sqrt
 // This continues until all points are passed.
 class RouteGenerator {
 
-    fun generateOutput(inputString: String): String{
+    fun generateOutput(inputString: String, shouldDropMultiplePizza: Boolean): String{
         val list = getPairsFromString(inputString)
         val localList = list.toMutableList()
         var output = ""
@@ -23,7 +23,7 @@ class RouteGenerator {
 
         while (localList.isNotEmpty()){
             val nearest = findNearest(currentElement, localList)
-            output += generateWayToNearest(currentElement, nearest)
+            output += generateWayToNearest(currentElement, nearest, shouldDropMultiplePizza)
 
             currentElement = nearest
             localList.remove(nearest)
@@ -31,7 +31,10 @@ class RouteGenerator {
         return output
     }
 
-    private fun generateWayToNearest(start: Pair<Int, Int>, end: Pair<Int, Int>): String{
+    private fun generateWayToNearest
+                (start: Pair<Int, Int>,
+                 end: Pair<Int, Int>,
+                 shouldDropMultiplePizza: Boolean): String{
         val up = UP
         val down = DOWN
         val right = RIGHT
@@ -88,7 +91,7 @@ class RouteGenerator {
                 val dy = 0
                 left.repeat(dx) + drop
             }
-            else -> ""
+            else -> if (shouldDropMultiplePizza) drop else ""
         }
     }
 

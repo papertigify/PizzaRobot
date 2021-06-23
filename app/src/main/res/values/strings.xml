@@ -5,4 +5,5 @@
     <string name="find_the_route">Find the route</string>
     <string name="fill_input_automatically">Fill input automatically</string>
     <string name="check_string">5x5 (0, 0) (1, 3) (4,4) (4, 2) (4, 2) (0, 1) (3, 2) (2, 3) (4, 1)</string>
+    <string name="multiple_pizza">Drop multiple pizza if destination mentioned multiple times</string>
 </resources>
