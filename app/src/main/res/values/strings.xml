@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">RobotDeliveryman</string>
-    <string name="pizza_delivery_robot_route">Pizza delivery robot route:</string>
-    <string name="enter_a_string">Enter a string...</string>
+    <string name="pizza_delivery_robot_route">Robot route: </string>
+    <string name="enter_a_string">Enter a string…</string>
     <string name="find_the_route">Find the route</string>
+    <string name="fill_input_automatically">Fill input automatically</string>
+    <string name="check_string">5x5 (0, 0) (1, 3) (4,4) (4, 2) (4, 2) (0, 1) (3, 2) (2, 3) (4, 1)</string>
 </resources>

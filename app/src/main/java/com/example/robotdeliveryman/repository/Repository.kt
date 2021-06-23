@@ -11,7 +11,8 @@ class Repository(private val inputValidator: InputValidator, private val routeGe
 
     suspend fun getRoute(inputString: String): Resource<String> {
         return withContext(Dispatchers.IO) {
-            delay(500L)
+            // little delay to simulate long background work
+            delay(300L)
             val isInputValid = inputValidator.checkInput(inputString)
             return@withContext if (!isInputValid) {
                 Resource.error("An error occured, please, check input", null)

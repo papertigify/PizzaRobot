@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import com.example.robotdeliveryman.R
 import com.example.robotdeliveryman.databinding.ActivityMainBinding
 import com.example.robotdeliveryman.ui.viewmodel.MainViewModel
 import com.example.robotdeliveryman.ui.viewmodel.ViewModelProviderFactory
@@ -34,8 +35,14 @@ class MainActivity : DaggerAppCompatActivity() {
             val inputString = binding.editText.text.toString()
             viewModel.getRoute(inputString)
 
+            // close the keyboard after the button is pressed
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
+
+        // automatically fills EtText with the check string from the task
+        binding.buttonFillAutomatically.setOnClickListener {
+            binding.editText.setText(getString(R.string.check_string))
         }
 
         viewModel.route.observe(this){
@@ -49,7 +56,6 @@ class MainActivity : DaggerAppCompatActivity() {
                     binding.progressBar.isVisible = false
                     binding.textViewOutput.isVisible = true
                     binding.textViewRobotRoute.isVisible = true
-
 
                     binding.textViewOutput.text = it.data.toString()
                 }

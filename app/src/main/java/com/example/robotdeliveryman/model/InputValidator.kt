@@ -2,7 +2,7 @@ package com.example.robotdeliveryman.model
 
 class InputValidator {
 
-    fun checkInput(string: String): Boolean{
+    fun checkInput(string: String): Boolean {
 
         if (string.length < 5)
             return false
