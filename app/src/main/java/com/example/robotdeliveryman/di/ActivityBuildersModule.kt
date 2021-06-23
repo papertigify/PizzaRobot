@@ -1,6 +1,6 @@
 package com.example.robotdeliveryman.di
 
-import com.example.robotdeliveryman.MainActivity
+import com.example.robotdeliveryman.ui.MainActivity
 import com.example.robotdeliveryman.di.main.MainModule
 import com.example.robotdeliveryman.di.main.MainScope
 import com.example.robotdeliveryman.di.main.MainViewModelsModule
