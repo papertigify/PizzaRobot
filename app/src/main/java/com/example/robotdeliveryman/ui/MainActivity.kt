@@ -3,6 +3,7 @@ package com.example.robotdeliveryman.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.robotdeliveryman.databinding.ActivityMainBinding
@@ -32,18 +33,32 @@ class MainActivity : DaggerAppCompatActivity() {
         binding.buttonFind.setOnClickListener {
             val inputString = binding.editText.text.toString()
             viewModel.getRoute(inputString)
+
+            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
 
         viewModel.route.observe(this){
             when(it.status){
-                Resource.Status.LOADING -> binding.progressBar.isVisible = true
+                Resource.Status.LOADING -> {
+                    binding.progressBar.isVisible = true
+                    binding.textViewRobotRoute.isVisible = false
+                    binding.textViewOutput.isVisible = false
+                }
                 Resource.Status.SUCCESS -> {
                     binding.progressBar.isVisible = false
+                    binding.textViewOutput.isVisible = true
+                    binding.textViewRobotRoute.isVisible = true
+
+
                     binding.textViewOutput.text = it.data.toString()
                 }
                 Resource.Status.ERROR -> {
+                    binding.textViewRobotRoute.isVisible = true
+                    binding.textViewOutput.isVisible = true
                     binding.progressBar.isVisible = false
-                    Log.e(TAG, "An error occurred, please, try again")
+                    binding.textViewOutput.text = it.message
+                    Log.e(TAG, it.message ?: "")
                 }
             }
         }
