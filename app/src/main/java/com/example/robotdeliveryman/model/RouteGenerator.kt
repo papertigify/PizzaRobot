@@ -117,7 +117,8 @@ class RouteGenerator {
 
     // transforms the input string to the list of Pair<Int, Int>
     private fun getPairsFromString(string: String): List<Pair<Int, Int>>{
-        val listOfNumbers = string.substring(4).filter {
+        val readyString = string.replace("\\s+".toRegex(),"")
+        val listOfNumbers = readyString.substring(3).filter {
             try {
                 it.toString().toInt()
                 true
