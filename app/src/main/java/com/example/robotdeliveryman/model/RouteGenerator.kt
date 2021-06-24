@@ -13,6 +13,8 @@ import kotlin.math.sqrt
 // The algorithm takes the starting coordinate, finds the point closest to it, builds a path to it,
 // then repeats the same thing with new point.
 // This continues until all points are passed.
+
+// robot does not drop pizza to the BASE_DESTINATION (0, 0)
 class RouteGenerator {
 
     fun generateOutput(inputString: String, shouldDropMultiplePizza: Boolean): String{
@@ -91,7 +93,7 @@ class RouteGenerator {
                 val dy = 0
                 left.repeat(dx) + drop
             }
-            else -> if (shouldDropMultiplePizza) drop else ""
+            else -> if (shouldDropMultiplePizza && end != BASE_DESTINATION) drop else ""
         }
     }
 
