@@ -15,7 +15,7 @@ class Repository(private val inputValidator: InputValidator, private val routeGe
             delay(300L)
             val isInputValid = inputValidator.checkInput(inputString)
             return@withContext if (!isInputValid) {
-                Resource.error("An error occured, please, check input", null)
+                Resource.error("An error occurred, please, check input", null)
             } else {
                 val result = routeGenerator.generateOutput(inputString, shouldDropMultiplePizza)
                 Resource.success(result)
