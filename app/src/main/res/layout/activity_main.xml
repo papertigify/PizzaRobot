@@ -10,7 +10,7 @@
         android:id="@+id/editText"
         android:layout_width="261dp"
         android:layout_height="52dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="140dp"
         android:background="@drawable/custom_edit_text"
         android:drawableStart="@drawable/search_icon"
         android:drawablePadding="12dp"
@@ -19,7 +19,6 @@
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,12 +85,12 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="331dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
         android:text="@string/multiple_pizza"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonFillAutomatically" />
 
